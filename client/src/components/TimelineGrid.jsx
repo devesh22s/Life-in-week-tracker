@@ -1,17 +1,18 @@
-const TimelineGrid = () => {
-  const totalWeeks = 90 * 52;
+import React from "react";
 
+const TOTAL_WEEKS = 90 * 52;
+
+export default function Timeline({ weeksLived }) {
   return (
-    <div className="grid grid-cols-52 gap-1 p-4 max-w-full overflow-auto">
-      {Array.from({ length: totalWeeks }).map((_, i) => (
+    <div className="grid grid-cols-52 gap-0.5 p-4">
+      {[...Array(TOTAL_WEEKS)].map((_, i) => (
         <div
           key={i}
-          className="w-3 h-3 bg-gray-300 hover:bg-blue-400 transition-colors duration-150"
-          title={`Week ${i + 1}`}
-        ></div>
+          className={`w-2 h-2 rounded-sm ${
+            i < weeksLived ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-700"
+          }`}
+        />
       ))}
     </div>
   );
-};
-
-export default TimelineGrid;
+}
