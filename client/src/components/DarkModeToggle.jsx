@@ -1,14 +1,17 @@
-export default function DarkModeToggle() {
-  const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
-  };
+import { useEffect, useState } from "react";
+
+const DarkModeToggle = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.body.className = darkMode ? "dark" : "";
+  }, [darkMode]);
 
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="px-4 py-2 rounded bg-black text-white dark:bg-yellow-400 dark:text-black mb-4"
-    >
-      Toggle Dark Mode
+    <button onClick={() => setDarkMode(prev => !prev)}>
+      {darkMode ? "🌙 Dark" : "☀️ Light"}
     </button>
   );
-}
+};
+
+export default DarkModeToggle;
