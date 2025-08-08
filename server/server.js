@@ -5,7 +5,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 
-dotenv.config();
+dotenv.config();   // load environment variable from .env file
 connectDB();
 const app = express();
 
