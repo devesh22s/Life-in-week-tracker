@@ -1,31 +1,46 @@
-import React, { createContext, useContext, useState } from 'react';
+// import React, { useState, useEffect } from "react";
+// import { AuthContext } from "./AuthContext";
 
-const AuthContext = createContext();
+// export const AuthProvider = ({ children }) => {
+//   const [user, setUser] = useState(null);
+
+//   useEffect(() => {
+//     // Check token on first load (mocked)
+//     const token = localStorage.getItem("token");
+//     if (token) {
+//       // Replace this with real user-fetching logic
+//       setUser({ email: "demo@example.com" });
+//     }
+//   }, []);
+
+//   return (
+//     <AuthContext.Provider value={{ user, setUser }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+
+
+import { useState } from 'react'
+import { AuthContext } from './AuthContext'
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null)
 
-  const login = (email, password) => {
-    // Replace this logic with real API call
-    if (email === 'test@test.com' && password === '123456') {
-      setUser({ email });
-    }
-  };
+  const login = async (email, password) => {
+    setUser({ email  })
+  }
 
-  const register = (email, password) => {
-    // Replace this logic with real API call
-    setUser({ email });
-  };
+  const register = async (email, password) => {
+    setUser({ email })
+  }
 
-  const logout = () => {
-    setUser(null);
-  };
+  const logout = () => setUser(null)
 
   return (
     <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
-  );
-};
-
-export const useAuthContext = () => useContext(AuthContext);
+  )
+}

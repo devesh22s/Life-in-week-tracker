@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 
 
 const Login = () => {
-  const { login } = useAuth();  // login function from context
+  const { login } = useAuth();  
   const [form, setForm] = useState({ email: "", password: "" });
 
   const handleSubmit = async () => {
